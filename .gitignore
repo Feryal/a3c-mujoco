@@ -1,3 +1,13 @@
+
+__pycache__/
+*.py[cod]
+*.pth
+MUJOCO_LOG.TXT
+results/
+
+*.prof
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
