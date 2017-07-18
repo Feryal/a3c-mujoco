@@ -13,20 +13,20 @@ parser.add_argument('--frame_skip', type=int, default=100, help="Frame skipping 
 parser.add_argument('--rewarding_distance', type=float, default=0.1, help='Distance from target at which reward is provided.')
 parser.add_argument('--control_magnitude', type=float, default=0.8, help='Fraction of actuator range used as control inputs.')
 parser.add_argument('--reward_continuous', action='store_true', help='if True, provides rewards at every timestep')
-parser.add_argument('--use_mujoco_viewer', action='store_true', help='if True, sets up MuJoCo Viewer instead of Matplotlib')
+parser.add_argument('--render', action='store_true', help='if True, sets up MuJoCo Viewer instead of Matplotlib')
 
 
 class JacoEnvRandomAgent():
     def __init__(self, width, height, frame_skip, rewarding_distance, control_magnitude,
-                 reward_continuous, use_mujoco_viewer):
+                 reward_continuous, render):
         self.env = JacoEnv(width, height, frame_skip, rewarding_distance,
                            control_magnitude, reward_continuous)
-        self.use_mujoco_viewer = use_mujoco_viewer
+        self.render = render
 
     def run(self):
         (_, _, obs_rgb_view2) = self.env.reset()
 
-        if self.use_mujoco_viewer:
+        if self.render:
             viewer = mujoco_py.MjViewer(self.env.sim)
         else:
             f, ax = plt.subplots()
@@ -49,7 +49,7 @@ class JacoEnvRandomAgent():
                 if done:
                     break
 
-                if self.use_mujoco_viewer:
+                if self.render:
                     viewer.render()
                 else:
                     im.set_data(obs_rgb_view2)
@@ -65,5 +65,5 @@ if __name__ == '__main__':
 
     agent = JacoEnvRandomAgent(args.width, args.height, args.frame_skip,
                                args.rewarding_distance, args.control_magnitude,
-                               args.reward_continuous, args.use_mujoco_viewer)
+                               args.reward_continuous, args.render)
     agent.run()
