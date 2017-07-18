@@ -3,6 +3,8 @@ a3c-mujoco
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
+Simulated target reaching tasks using the MuJoCo physics engine. The setup is adapted from [1] end-to-end learning setup for solving pixel-driven control of Jaco arm where learning is accomplished using Asynchronous Advantage Actor-Critic (A3C)[2] method with sparse rewards.
+
 Usage:
 ------------
 
