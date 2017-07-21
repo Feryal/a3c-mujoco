@@ -16,6 +16,7 @@ Dependencies:
 - [Python 3.5.2](https://www.python.org/)
 - [NumPy](http://www.numpy.org/)
 - [mujoco-py 1.50.1](https://github.com/openai/mujoco-py)
+- [OpenAI Gym](https://gym.openai.com/)
 - [PyTorch](http://pytorch.org/)
 - [Plotly](https://plot.ly/python/)
 
