@@ -6,7 +6,7 @@ from torch.autograd import Variable
 from jaco_arm import JacoEnv
 from model import ActorCritic
 from utils import state_to_tensor
-
+import mujoco_py
 
 # Transfers gradients from thread-specific model to shared model
 def _transfer_grads_to_shared_model(model, shared_model):
@@ -160,3 +160,6 @@ def train(rank, args, T, shared_model, optimiser):
         # Train the network
         _train(args, T, model, shared_model, optimiser, policies, Vs, actions,
                rewards, R)
+        
+        viewer = mujoco_py.MjViewer(env.sim)
+        viewer.render()
